@@ -17,6 +17,16 @@ public class DefaultRendererGameAdapter implements RendererGameAdapter {
     }
 
     @Override
+    public boolean isGameOver() {
+        return this.game.isGameOver;
+    }
+
+    @Override
+    public void reset() {
+        this.game.reset();
+    }
+
+    @Override
     public Tile getTile(int x, int y) {
         Square square = this.game.getSquare(x,y);
         if(square == Square.HIDDEN) return Tile.EMPTY;

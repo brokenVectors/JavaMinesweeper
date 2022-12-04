@@ -31,6 +31,7 @@ public class Renderer extends JFrame {
         this.cols = cols;
         this.adapter = new DefaultRendererGameAdapter(new Game(rows, cols, 10));
         this.addMouseListener(new RendererMouseListener(this, width, height, rows, cols));
+        this.addKeyListener(new RendererKeyListener(this));
         this.setSize(new Dimension(width, height));
         this.sprites = new Image[16];
         try {

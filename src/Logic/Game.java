@@ -8,14 +8,13 @@ public class Game {
     private final ArrayList<Mine> mines;
     private final int width;
     private final int height;
-    private boolean isGameOver;
+    public boolean isGameOver;
     public Game(int width, int height, int mineQuantity) {
         this.width = width;
         this.height = height;
         this.grid = new Square[width][height];
         this.mines = new ArrayList<>();
-        this.initializeGrid();
-        this.initializeMines(mineQuantity);
+        this.reset(mineQuantity);
     }
 
     private void initializeMines(int quantity) {
@@ -30,6 +29,14 @@ public class Game {
                 this.mines.add(new Mine(x,y));
             }
         }
+    }
+    public void reset(int mineQuantity) {
+        this.initializeGrid();
+        this.initializeMines(mineQuantity);
+        this.isGameOver = false;
+    }
+    public void reset() {
+        this.reset(10);
     }
     public boolean isMine(int x, int y) {
         Optional<Mine> optional = this.mines.stream()
